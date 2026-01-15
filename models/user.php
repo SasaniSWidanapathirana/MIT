@@ -30,6 +30,30 @@ class User {
         $stmt->bindParam(':status', $status);
         return $stmt->execute();
     }
+    //delete user
+public function deleteUser($id) {
+        $query = "DELETE FROM " . $this->table . " WHERE user_id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+
+
+        }
+// update user
+    public function updateUser($id, $nic, $email, $role, $field) {
+        $query = "UPDATE " . $this->table . "
+                  SET nic = :nic,
+                      email = :email,
+                      field = :field
+                  WHERE user_id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nic', $nic);
+        $stmt->bindParam(':email', $email);
+       // $stmt->bindParam(':role', $role);
+        $stmt->bindParam(':field', $field);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }
 ?>
 
