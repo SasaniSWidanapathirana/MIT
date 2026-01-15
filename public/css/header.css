@@ -1,0 +1,61 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    background-color: white;
+    padding: 5px 25px;
+    display: flex;
+    align-items: center; /* Vertically centers logo + nav */
+    gap: 25px;
+    border-radius: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 20px 10px 0px 10px;
+}
+
+/* Move navigation links to the right */
+.header nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center; /* Vertically centers links + button */
+    gap: 25px;
+}
+
+/* Logo styling */
+.header img {
+    height: 50px;
+}
+
+.header > a {
+    display: flex;
+    align-items: center;  /* centers the logo vertically */
+}
+
+/* Nav links */
+.header a {
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center; /* vertically centers text inside link */
+}
+
+
+/* Login button */
+.header nav button {
+    background-color: #F87B1B;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 10px;
+    display: flex;
+    align-items: center; /* vertically centers button text */
+    justify-content: center;
+}

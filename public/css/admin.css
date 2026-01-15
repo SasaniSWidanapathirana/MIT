@@ -1,0 +1,296 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main content offset */
+.admin-body {
+    margin-left: 240px;   /* SAME as sidenav width */
+    background-color: #f9f8f6;
+}
+
+/* Hidden by default (moved off-screen) */
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: -550px; /* hide outside */
+    width: 450px;
+    height: 96%;
+    background: #ffffff;
+    box-shadow: -2px 0px 8px rgba(0,0,0,0.2);
+    padding: 20px;
+    transition: 0.3s ease;
+    z-index: 999;
+    border-radius: 20px;
+}
+
+/* When active, slide into view */
+.side-panel.open {
+    right: 0;
+}
+
+.close-btn {
+    background: #F2F2F2;
+    color: #A6A6A6;
+    border: none;
+    padding: 6px 6px;
+    cursor: pointer;
+    float: right;
+    border-radius: 20px;
+}
+
+.create-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* space between icon and text */
+    padding: 10px 16px;
+    background-color: #ED7D2B;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.create-btn .icon {
+    fill: white; /* make sure the icon is visible */
+}
+
+.createFormTitle{
+    color: #ED7D2B;
+    gap: 8px;
+    display: flex;               /* use flex to allow centering */
+    justify-content: center;     /* center horizontally */
+    align-items: center; 
+    font-size: 20px;
+    align-self: center;
+    margin: 10px 5px 10px 5px;
+}
+
+.createFormTitle .icon{
+    fill: #ED7D2B;
+}
+
+.createFormTitle .material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 650,
+  'GRAD' 0,
+  'opsz' 20
+}
+
+/* Form container */
+#form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* space between fields */
+    padding: 10px 5px;
+}
+
+/* Labels */
+#form-container label {
+    font-weight: 500;
+    color: #1E3E62;
+    margin-bottom: 4px;
+}
+
+/* Inputs and textarea */
+#form-container input,
+#form-container textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+/* Focus effect for inputs */
+#form-container input:focus,
+#form-container textarea:focus {
+    border-color: #1E3E62;
+    box-shadow: 0 0 5px rgba(30, 62, 98, 0.3);
+}
+
+/* Textarea specific */
+#form-container textarea {
+    resize: vertical;  /* allow vertical resize only */
+    min-height: 80px;
+}
+#form-container select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s, box-shadow 0.3s;
+}  
+#form-container select:focus {
+    border-color: #1E3E62;
+    box-shadow: 0 0 5px rgba(30, 62, 98, 0.3);
+}
+
+/* Submit button */
+#form-container button {
+    padding: 10px;
+    background-color: #ED7D2B;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Button hover */
+#form-container button:hover {
+    background-color: #1E3E62; /* accent color on hover */
+}
+
+/* Optional: responsive adjustments for mobile */
+@media (max-width: 400px) {
+    #form-container input,
+    #form-container textarea,
+    #form-container button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Page Layout */
+.admin-body {
+    margin: 0;
+    display: flex;
+    font-family: Arial, sans-serif;
+}
+
+/* Side Navigation */
+.sidenav {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #1E3E62;
+    color: #fff;
+    z-index: 1000;
+}
+
+/* Main Wrapper (Topbar + Content) */
+.main-wrapper {
+    margin-left: 260px;   /* same as sidenav width */
+    width: calc(100% - 260px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content */
+.content {
+    position: relative;              /* normal flow */
+     margin: 95px 10px 20px 15px;  /* or adjust top/bottom margins */                  /* optional top margin outside content */
+    padding: 20px 15px;              /* inner spacing */
+    background-color: #ffffff;
+    border-radius: 20px;
+    overflow: visible;               /* do not scroll content */
+    height: calc(100vh - 120px);     /* viewport height minus header/title + margin */
+    box-sizing: border-box;          /* include padding in height */
+}
+
+/* Create Event bar stays above table */
+.create-event-bar {
+    margin-bottom: 20px;             /* spacing below the button */
+}
+
+/* Table wrapper scrollable and spaced from content above */
+.event-table-wrapper {
+    margin-top: 20px;                /* space from content above */
+    height: calc(100% - 40px);       /* fill remaining height */
+    overflow-y: auto;                /* scroll inside table only */
+    border-radius: 16px;
+    background-color: #FFF8F4;
+}
+
+/* Table styling */
+.event-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #ffffff;
+}
+
+.event-table th {
+    position: sticky;       /* keep header visible */
+    top: 0;
+    background-color: #FFF8F4;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    z-index: 2;
+}
+
+.event-table td {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+    padding: 20px;
+}
+
+/* Round table corners */
+.event-table tr:first-child th:first-child {
+    border-top-left-radius: 16px;
+}
+.event-table tr:first-child th:last-child {
+    border-top-right-radius: 16px;
+}
+.event-table tr:last-child td:first-child {
+    border-bottom-left-radius: 16px;
+}
+.event-table tr:last-child td:last-child {
+    border-bottom-right-radius: 16px;
+}
+
+/* Action buttons */
+.action-cell {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1E3E62;
+}
+
+.action-btn .material-symbols-rounded {
+    font-size: 20px;
+}
+
+.action-btn.edit:hover {
+    background: rgba(30,62,98,0.06);
+}
+
+.action-btn.delete:hover {
+    background: rgba(229,57,53,0.08);
+}
+
+/* Bar holding the Create Event button */
+.create-event-bar {
+    display: flex;
+    justify-content: flex-end; /* move to right */
+    margin-bottom: 20px;
+}
+
+
+

@@ -1,0 +1,99 @@
+/* Page background container */
+.bg-container {
+    min-height: 130vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Title */
+.login_title {
+    font-size: 32px;
+    margin-bottom: 6px;
+    color: #333;
+    text-align: center;
+}
+
+/* Subtitle */
+.login_subtitle {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form */
+.login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Labels */
+.login_form label {
+    width: 380px;
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* Inputs */
+.login_form input[type="email"],
+.login_form input[type="password"] {
+    width: 380px;
+    padding: 14px 20px;
+    font-size: 18px;
+
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    outline: none;
+
+    text-align: center;
+
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input focus */
+.login_form input:focus {
+    border-color: #ff9443;
+    box-shadow: 0 0 6px rgba(255, 148, 67, 0.6);
+}
+
+/* Placeholder */
+.login_form input::placeholder {
+    color: #999;
+}
+
+/* Buttons */
+.login_button {
+    background-color: #ff9443;
+    color: white;
+    border: none;
+    padding: 14px 0;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+
+    width: 280px;
+    margin: 15px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button hover */
+.login_button:hover {
+    background-color: #ff7a1a;
+    transform: scale(1.05);
+}
+
+/* Error message */
+.login_error {
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+}

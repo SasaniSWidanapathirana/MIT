@@ -1,0 +1,85 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container for background image */
+.bg-container {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* Full viewport height */
+    overflow: hidden;
+    background-color:#f8d3b8;
+}
+
+.content-wrapper {
+    padding-left: 10%;
+    padding-right: 10%;
+    box-sizing: border-box; /* ensures padding doesn't break layout */
+    
+}
+
+
+
+/* Background image fills the width */
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;      /* Fill full width */
+    height: 100%;     /* Fill full height */
+    object-fit: cover; /* Scale image without stretching */
+    z-index: 1;
+}
+
+
+
+.h1_center {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.h2_center {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.header { 
+    position: relative; 
+    z-index: 10; 
+  
+}
+
+
+
+.projects {
+    text-align: center;          /* Center text (H1 & H3) */
+    display: flex;
+    flex-direction: column;      /* Stack items vertically */
+    align-items: center;         /* Center horizontally */
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.projecttitle h1{
+    font-size: 54px;
+    color: #1E3E62;
+    margin: 5px;
+}
+
+.projecttitle h3{
+    font-size: 24px;
+    color: #5F6368;
+    margin: 5px 0px 60px 0px;
+    font-weight: 400;
+}
+
+.card-row{
+    margin-bottom: 50px;
+}
