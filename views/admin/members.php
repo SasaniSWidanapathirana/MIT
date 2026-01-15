@@ -20,9 +20,8 @@ $users = $userObj->getAllUsers();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/admin.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
-     <!-- <link rel="stylesheet" href="../../public/css/style.css">  -->
-   
      <script src="/../public/js/addUser.js"></script>
+    <script src="/../public/js/editUser.js"></script>
     <title>Admin Screen</title>
 </head>
 
@@ -69,14 +68,11 @@ $users = $userObj->getAllUsers();
                     <option value="admin">Admin</option>
                 </select>
 
-                <!-- <label for="name">Name</label>
-                <input type="text" id="name" name="userName" required> -->
+                <label for="name">Name</label>
+                <input type="text" id="name" name="userName" required>
 
-                <label for="field">Field</label>
-                <select id="field" name="field" required>
-                    <option value="field1">Fileld1</option>
-                    <option value="field2">Field2</option>
-                </select>
+                <!-- <label>Field Count</label>
+                <input type="number" name="field" id="field" min="0" required>  -->
                 
                 <label for="nic">NIC</label>
                 <input type="text" id="nic" name="userNIC" required>
@@ -87,24 +83,63 @@ $users = $userObj->getAllUsers();
                 <label for="password">Password</label>
                 <input type="password" id="password" name="userPassword" required>
 
+                <label for="userRStatus">Status</label>
+                <select id="userStatus" name="userStatus" required>
+                    <option value="available">Available</option>
+                    <option value="not_available">Not Available</option>
+                    <option value="temporary_unavailable">Temporary Unavailable</option>
+                </select>
 
                 <button type="submit">Create</button>
 
             </form>
         </div> 
+   
+            <!--Edit Form -->
+                 <div id="editSidePanel" class="side-panel">
+                    <button id="closeEditPanelBtn" class="close-btn">
+                        <span class="material-symbols-rounded">close</span>
+                    </button>
 
-   </div> 
-    
+                    <h3 class="createFormTitle">
+                        <span class="material-symbols-rounded">edit</span>
+                        Edit User
+                    </h3>
+
+                    <form id="form-container" method="POST" action="edit_user.php">
+                        <input type="hidden" name="user_id" id="edit_user_id">
+
+                        <label for="userRole">Role</label>
+                            <select id="userRole" name="userRole" required>
+                                <option value="volunteer">Volunteer</option>
+                                <option value="admin">Admin</option>
+                            </select>
+
+                        <label>Name</label>
+                        <input type="text" name="userName" id="edit_userName" required>
+                        
+                        <label>NIC</label>
+                        <input type="text" name="userNIC" id="edit_userNIC" required>
+                        <label>Email</label>
+                        <input type="email" name="userEmail" id="edit_userEmail" required>
+                        
+                        <label>Field Count</label>
+                        <input type="number" name="field" id="edit_field" min="0" required> 
+                        <button type="submit">Update</button>
+                    </form>
+                </div>
+            </div>
+
             <div class="event-table-wrapper">
-                <table class="event-table">
+                <table class="event-table"> 
                     <tr>
-                        <th>User_id</th>
+                      <!--  <th>User_id</th> -->
                         <th>NIC</th>
                         <th>Email</th>
-                        <th>Password</th>
+                       <!-- <th>Password</th> -->   
                         <th>Role</th>
                         <th>Field Count</th>
-                        <th>Status</th>
+                      <!--  <th>Status</th> --> 
                         <th>Actions</th>
 
                     </tr>
@@ -114,24 +149,35 @@ $users = $userObj->getAllUsers();
         while ($row = $users->fetch(PDO::FETCH_ASSOC)) : 
         ?>
             <tr>
-                <td><?= htmlspecialchars($row['user_id']); ?></td>
+              <!--  <td><?= htmlspecialchars($row['user_id']); ?></td> -->
                 <td><?= htmlspecialchars($row['nic']); ?></td>
                 <td><?= htmlspecialchars($row['email']); ?></td>
-                <td><?= htmlspecialchars($row['password']); ?></td>
+              <!--   <td><?= htmlspecialchars($row['password']); ?></td> -->
                 <td><?= htmlspecialchars($row['role']); ?></td>
                 <td><?= htmlspecialchars($row['field']); ?></td>
-                <td><?= htmlspecialchars($row['status']); ?></td>
+              <!--  <td><?= htmlspecialchars($row['status']); ?></td> -->
+
                   <td class="action-cell">
-                                <a class="action-btn edit" href="edit_user.php?id=<?= urlencode($row['user_id']); ?>" title="Edit">
+
+                                <a class="action-btn edit"
+                                href="#"
+                                data-id="<?= htmlspecialchars($row['user_id']); ?>"
+                                data-nic="<?= htmlspecialchars($row['nic']); ?>"
+                                data-email="<?= htmlspecialchars($row['email']); ?>"
+                                data-field="<?= htmlspecialchars($row['field']); ?>">
                                     <span class="material-symbols-rounded">edit</span>
                                 </a>
-                                <a class="action-btn delete" href="delete_user.php?id=<?= urlencode($row['user_id']); ?>" title="Delete" onclick="return confirm('Delete this user?');">
+                                <a class="action-btn delete" href="delete_user.php?id=<?= urlencode($row['user_id']); ?>"
+                                title="Delete" onclick="return confirm('Are you sure you want to delete this user?');">
                                     <span class="material-symbols-rounded">delete</span>
                                 </a>
                             </td>
             </tr>
         <?php endwhile; ?>
     </table>
+</div>
 
+       </main>
+    </div>
 </body>
 </html>
