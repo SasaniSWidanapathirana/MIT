@@ -39,8 +39,12 @@
 }
 
 /* Inputs */
+.login_form input[type="name"],
 .login_form input[type="email"],
-.login_form input[type="password"] {
+.login_form input[type="nic"],
+.login_form input[type="role"],
+.login_form input[type="password"],
+.login_form select {
     width: 380px;
     padding: 14px 20px;
     font-size: 18px;
@@ -54,6 +58,7 @@
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 /* Input focus */
 .login_form input:focus {
     border-color: #ff9443;
@@ -62,6 +67,10 @@
 
 /* Placeholder */
 .login_form input::placeholder {
+    color: #999;
+}
+
+.login_form select::value {
     color: #999;
 }
 
