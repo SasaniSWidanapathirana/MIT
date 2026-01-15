@@ -2,7 +2,7 @@
 class User {
 
     private $conn;
-    private $table = "user";
+    private $table = "app_users";
 
     public function __construct($db) {
         $this->conn = $db;

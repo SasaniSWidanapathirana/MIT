@@ -21,7 +21,7 @@
     <nav>
         <a href="../../index.php" class="active">Home</a>
         <a href='/views/common/about.php'>About Us</a>
-        <a href="#">Contact Us</a>
+        <a href="/views/common/contact.php">Contact Us</a>
         <button onclick="location.href='/views/common/login.php'">Login</button>
     </nav>
 </div>
