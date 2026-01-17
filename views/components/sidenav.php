@@ -36,6 +36,11 @@
             <a href="#contact" class="<?= $currentPage == 'contact.php' ? 'active' : '' ?>">
                 <span class="material-symbols-rounded">call</span>Contact
             </a>
+            <a href="../common/profile.php" class="<?= $currentPage == 'profile.php' ? 'active' : '' ?>">
+            <span class="material-symbols-rounded">
+            person
+            </span>Profile</a>
+            
         </div>
 
         

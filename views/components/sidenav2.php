@@ -34,7 +34,7 @@
             event
             </span>Past Events</a>
 
-        <a href="#contact" class="<?= $currentPage == 'profile_edit.php' ? 'active' : '' ?>">
+        <a href="../common/profile.php" class="<?= $currentPage == 'profile.php' ? 'active' : '' ?>">
             <span class="material-symbols-rounded">
             person
             </span>Profile</a>

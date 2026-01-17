@@ -31,9 +31,9 @@ if (!isset($pageTitle)) {
             </button>
 
             <div class="dropdown-menu">
-                <a href="../profile.php">My Profile</a>
+                <a href="../common/profile.php">My Profile</a>
                 <div class="divider"></div>
-                <a href="../logout.php" class="logout">Logout</a>
+                <a href="../../index.php" class="logout">Logout</a>
             </div>
         </div>
     </div>

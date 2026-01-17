@@ -1,0 +1,121 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* body{
+    font-family:'Inter',sans-serif;
+    background:linear-gradient(to right,#FFFFFF);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+} */
+
+/* PROFILE CARD */
+.profile-card{
+    width:100%;
+    height: 100%;
+    max-width:660px;
+    max-height: 800px;
+    background:#FFCC99;
+    border-radius:20px;
+    margin:50px auto;
+    padding:30px 25px;
+    align-content: center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.12);
+}
+
+/* TITLE */
+.profile-card h2{
+    font-size:1.6rem;
+    margin-bottom:22px;
+    text-align:center;
+    color:#404040;
+}
+
+/* PROFILE PHOTO */
+.profile-photo{
+    text-align:center;
+}
+
+.profile-photo img{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    border:5px solid #ff8000;
+    object-fit:cover;
+    transition:0.3s;
+}
+
+.profile-photo img:hover{
+    transform:scale(1.05);
+}
+
+/* CHANGE PHOTO BUTTON */
+.change-photo-btn{
+    display:inline-block;
+    margin-top:12px;
+    padding:8px 18px;
+    background:#ff9933;
+    color:#fff;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:600;
+    font-size:13px;
+}
+
+.change-photo-btn input{
+    display:none;
+}
+
+/* PROFILE FIELDS */
+.profile-field{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#f9f9f9;
+    border-radius:12px;
+    padding:12px 14px;
+    margin-top:12px;
+}
+
+.field-label{
+    font-weight:600;
+    width:80px;
+    font-size:14px;
+    color:#202020;
+}
+
+.field-value{
+    flex:1;
+    font-size:14px;
+    color:#A0A0A0;
+}
+
+/* EDIT ICON */
+.field-actions i{
+    color:#ff8000;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.field-actions i:hover{
+    transform:scale(1.2);
+}
+
+/* BACK BUTTON */
+.back-btn{
+    display:block;
+    margin:25px auto 0;
+    padding:10px 24px;
+    background:#ff9933;
+    color:#fff;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    width:max-content;
+}
