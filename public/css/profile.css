@@ -25,6 +25,7 @@
     padding:30px 25px;
     align-content: center;
     box-shadow:0 20px 40px rgba(0,0,0,0.12);
+   
 }
 
 /* TITLE */
@@ -66,6 +67,22 @@
     font-size:13px;
 }
 
+.save-btn{
+    
+    .save-btn{
+    display: block;
+    margin: 20px auto 0; /* centers horizontally */
+    padding: 8px 18px;
+    background: #ff9933;
+    color: #fff;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+}
+
 .change-photo-btn input{
     display:none;
 }
@@ -79,6 +96,7 @@
     border-radius:12px;
     padding:12px 14px;
     margin-top:12px;
+    
 }
 
 .field-label{
@@ -91,7 +109,7 @@
 .field-value{
     flex:1;
     font-size:14px;
-    color:#A0A0A0;
+    color:#363535;
 }
 
 /* EDIT ICON */
