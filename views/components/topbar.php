@@ -33,7 +33,7 @@ if (!isset($pageTitle)) {
             <div class="dropdown-menu">
                 <a href="../common/profile.php">My Profile</a>
                 <div class="divider"></div>
-                <a href="../../index.php" class="logout">Logout</a>
+                <a href="../logout.php" class="logout">Logout</a>
             </div>
         </div>
     </div>

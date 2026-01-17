@@ -10,6 +10,12 @@
     // Load users
     $userObj = new User($db);
     $users = $userObj->getAllUsers();
+    // User counts
+    $totalUsers         = $db->query("SELECT COUNT(*) FROM users")->fetchColumn();
+    $totalAdmins        = $db->query("SELECT COUNT(*) FROM users WHERE role = 1")->fetchColumn();
+    $totalVolunteers    = $db->query("SELECT COUNT(*) FROM users WHERE role = 2")->fetchColumn();
+    $pendingAdmins      = $db->query("SELECT COUNT(*) FROM users WHERE role = 11")->fetchColumn();
+
     ?>
 
     <!DOCTYPE html>
@@ -36,8 +42,55 @@
             <!-- Top Bar -->
 
             <?php
+            
                 $pageTitle = "Users"; // or "Member" etc.
                 include '../components/topbar.php';?>
+
+
+        <div class="stats-bar">
+            <div class="stat-box">
+                <h4>All Users</h4>
+               <div class="innerbox" style="background: #dcf3ff;"><div class="iconvalue" ><span class="material-symbols-rounded" style="background: #0078d4;">user_attributes</span>
+                <span class="label">
+                    count :
+                </span>
+
+               <span class="value"><?= $totalUsers; ?></span></div></div> 
+            </div>
+
+            <div class="stat-box">
+                <h4>Admins</h4>
+                               <div class="innerbox" style="background: #fffaea;"><div class="iconvalue"><span class="material-symbols-rounded" style="background: #ffa500;">manage_accounts</span>
+                <span class="label">
+                    count :
+                </span>
+
+               <span class="value"><?= $totalAdmins; ?></span></div></div>
+                
+            </div>
+
+            <div class="stat-box">
+                <h4>Volunteers</h4>
+                <div class="innerbox" style="background: #eaffed;"><div class="iconvalue"><span class="material-symbols-rounded" style="background: #15ae89;">person_raised_hand</span>
+                <span class="label">
+                    count :
+                </span>
+
+               <span class="value"><?= $totalVolunteers; ?></span></div></div>
+            </div>
+
+            <div class="stat-box">
+                <h4>Pending Admins</h4>
+                <div class="innerbox" style="background: #ffe4dc;"><div class="iconvalue"><span class="material-symbols-rounded" style="background: #ff5174;">person_alert</span>
+                <span class="label">
+                    count :
+                </span>
+
+               <span class="value"><?= $pendingAdmins; ?></span></div></div>
+            </div>
+
+            
+        </div>
 
             <!-- Main Content -->
         <main class="content">
@@ -143,6 +196,7 @@
                                 $roleNames = [
                                     1 => 'Admin',
                                     2 => 'Volunteer',
+                                    11 => 'Admin (Pending)',
                                     ];
 
                                 $statusNames = [

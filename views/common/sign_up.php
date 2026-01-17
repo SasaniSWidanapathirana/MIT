@@ -38,7 +38,11 @@ if (isset($_POST['signup'])) {
                 } elseif ($user['role'] == 2) {
                     header("Location: ../voulnteer/volunteer_panel.php");
                     exit;
+                } elseif ($user['role'] == 11) {
+                    header("Location: app_pending.php");
+                    exit;
                 }
+                
             } else {
                 $error = "Login failed after registration.";
             }
@@ -91,7 +95,7 @@ if (isset($_POST['signup'])) {
         <label for="role">Role</label>
         <select name="role" id="role" required>
             <option value="">Select Role</option>
-            <option value="1">Admin</option>
+            <option value="11">Admin</option>
             <option value="2">Volunteer</option>
         </select>
 
