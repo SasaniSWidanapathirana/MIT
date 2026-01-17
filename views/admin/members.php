@@ -93,7 +93,7 @@
         </div>
 
             <!-- Main Content -->
-        <main class="content">
+        <main class="content" style="margin: 20px;">
 
                 <div class="div">
                     <div class="div create-event-bar">
