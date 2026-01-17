@@ -16,27 +16,6 @@
         </a>
         </div>
 
-        <!-- <div class="menu">
-        <a href='../admin/admin_panel.php' class="active">
-            <span class="material-symbols-rounded">
-            event
-            </span>Current Events</a>
-
-        <a href='../admin/past_event.php'>
-            <span class="material-symbols-rounded">
-            event_available
-            </span>Past Events</a>
-
-        <a href='../admin/members.php'>
-            <span class="material-symbols-rounded">
-            person
-            </span>Users</a>
-
-        <a href="#contact">
-            <span class="material-symbols-rounded">
-            call
-            </span>Contact</a>
-        </div> -->
 
         <?php
         $currentPage = basename($_SERVER['PHP_SELF']); // gets current file name

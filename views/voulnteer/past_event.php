@@ -1,54 +1,47 @@
-<?php
-session_start();
+<?php 
+// Load DB + Model
 require_once '../../config/db.php';
 require_once '../../models/event.php';
 
-// Make sure user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
-    exit;
-}
-
-$userId = $_SESSION['user_id'];
-
-
+// DB Connection
 $database = new Database();
 $db = $database->connect();
 
-$eventObj = new Event($db);
-$events = $eventObj->getAllEventsWithParticipation($userId);
+// Load events
+$past_eventObj = new Event($db);
+$past_events = $past_eventObj->getPastEvents();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <title>Admin Screen</title> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/../public/js/addEvent.js"></script>
-    <script src="/../public/js/eventParticipation.js"></script>
     <link rel="stylesheet" href="../../public/css/admin.css">
-    <link rel="stylesheet" href="../../public/css/volunteer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
-    <title>Volunteer Screen</title>
+    <title>Admin Panel</title>
 </head>
 
-
 <body class="admin-body">
-
-    <!-- Side Navigation -->
-    <?php include '../components/sidenav2.php'; ?>
+        <!-- Side Navigation -->
+    <?php include '../components/sidenav.php'; ?>
 
     <!-- Main Wrapper -->
     <div class="main-wrapper">
 
         <!-- Top Bar -->
-
         <?php
-            $pageTitle = "Upcoming Events"; 
+            $pageTitle = "Past Events"; // or "Member" etc.
             include '../components/topbar.php';?>
 
-        <!-- Main Content -->
+
+<!-- Main Content -->
         <main class="content">
 
             <div class="event-table-wrapper">
@@ -63,7 +56,7 @@ $events = $eventObj->getAllEventsWithParticipation($userId);
                         <th>Actions</th>
                     </tr>
 
-                    <?php while ($row = $events->fetch(PDO::FETCH_ASSOC)) : ?>
+                    <?php while ($row = $past_events->fetch(PDO::FETCH_ASSOC)) : ?>
                         <tr>
                             <!-- <td><?= htmlspecialchars($row['event_id']); ?></td> -->
                             <td><?= htmlspecialchars($row['title']); ?></td>
@@ -72,18 +65,13 @@ $events = $eventObj->getAllEventsWithParticipation($userId);
                             <td><?= htmlspecialchars($row['location']); ?></td>
                             <td><?= htmlspecialchars($row['exp_cnt']); ?></td>
                             <td class="action-cell">
-                                <label class="switch">
-                                    <input 
-                                        type="checkbox"
-                                        class="participation-toggle"
-                                        data-event-id="<?= $row['event_id']; ?>"
-                                        <?= $row['joined'] ? 'checked' : '' ?>
-                                    >
-
-                                    <span class="slider"></span>
-                                </label>
+                                <a class="action-btn edit" href="edit_event.php?id=<?= urlencode($row['event_id']); ?>" title="Edit">
+                                    <span class="material-symbols-rounded">edit</span>
+                                </a>
+                                <a class="action-btn delete" href="delete_event.php?id=<?= urlencode($row['event_id']); ?>" title="Delete" onclick="return confirm('Delete this event?');">
+                                    <span class="material-symbols-rounded">delete</span>
+                                </a>
                             </td>
-
                         </tr>
                     <?php endwhile; ?>
                 </table>

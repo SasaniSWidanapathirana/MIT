@@ -1,23 +1,42 @@
 <?php
-require_once '../../config/db.php';
+session_start();
+require_once __DIR__ . '/../config/db.php';
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+header('Content-Type: application/json');
+
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['success' => false, 'message' => 'User not logged in']);
+    exit;
+}
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$eventId = $data['event_id'];
-$status  = $data['status'];
-$userId  = $_SESSION['user_id']; // logged-in user
+$eventId = isset($data['event_id']) ? (int)$data['event_id'] : 0;
+$action  = $data['action'] ?? '';
+$userId  = (int)$_SESSION['user_id'];
+
+if ($eventId <= 0 || !in_array($action, ['join', 'leave'])) {
+    echo json_encode(['success' => false, 'message' => 'Invalid request']);
+    exit;
+}
 
 $db = (new Database())->connect();
 
-$sql = "INSERT INTO event_user (event_id, user_id, participation_status)
-        VALUES (:event_id, :user_id, :status)
-        ON DUPLICATE KEY UPDATE participation_status = :status";
+try {
+    if ($action === 'join') {
+        $stmt = $db->prepare( "INSERT INTO event_users (event_id, user_id) VALUES (:event_id, :user_id)");
+        $stmt->execute([':event_id' => $eventId, ':user_id' => $userId]);
+    } else {
+        $stmt = $db->prepare("DELETE FROM event_users WHERE event_id = :event_id AND user_id = :user_id");
+        $stmt->execute([':event_id' => $eventId, ':user_id' => $userId]);
+    }
 
-$stmt = $db->prepare($sql);
-$success = $stmt->execute([
-    ':event_id' => $eventId,
-    ':user_id'  => $userId,
-    ':status'   => $status
-]);
+    echo json_encode(['success' => true]);
 
-echo json_encode(['success' => $success]);
+} catch (PDOException $e) {
+    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+}

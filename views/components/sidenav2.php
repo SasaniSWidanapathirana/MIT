@@ -15,27 +15,29 @@
             <img src="/../../public/images/logo2.png">   
         </a>
         </div>
-
+        <?php
+        $currentPage = basename($_SERVER['PHP_SELF']); // gets current file name
+        ?>
         <div class="menu">
-        <a href='../voulnteer/volunteer_panel.php' class="active">
+        <a href='../voulnteer/volunteer_panel.php' class="<?= $currentPage == 'volunteer_panel.php' ? 'active' : '' ?>">
             <span class="material-symbols-rounded">
-            event
-            </span>Current Events</a>
+            event_upcoming
+            </span>Upcoming Events</a>
 
-        <a href='../voulnteer/view_atten.php'>
+        <a href='../voulnteer/participation.php' class="<?= $currentPage == 'participation.php' ? 'active' : '' ?>">
             <span class="material-symbols-rounded">
             event_available
-            </span>View Attendance</a>
+            </span>My Participation</a>
 
-        <a href='../admin/members.php'>
+        <a href='../voulnteer/past_events.php' class="<?= $currentPage == 'past_events.php' ? 'active' : '' ?>">
+            <span class="material-symbols-rounded">
+            event
+            </span>Past Events</a>
+
+        <a href="#contact" class="<?= $currentPage == 'profile_edit.php' ? 'active' : '' ?>">
             <span class="material-symbols-rounded">
             person
-            </span>Users</a>
-
-        <a href="#contact">
-            <span class="material-symbols-rounded">
-            call
-            </span>Contact</a>
+            </span>Profile</a>
         </div>
         
     </div>

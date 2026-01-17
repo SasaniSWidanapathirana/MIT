@@ -19,8 +19,8 @@ class User {
     // Insert new user (signup)
     public function register($name, $nic, $email, $password, $role = 2, $field = 1, $status = 1) {
         $query = "INSERT INTO " . $this->table . " 
-                  (name, nic, email, password, role, field, status)
-                  VALUES (:name, :nic, :email, :password, :role, :field, :status)";
+                  (name, nic, email, password, role, status)
+                  VALUES (:name, :nic, :email, :password, :role, :status)";
 
         $stmt = $this->conn->prepare($query);
 
@@ -32,7 +32,6 @@ class User {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':role', $role);
-        $stmt->bindParam(':field', $field);
         $stmt->bindParam(':status', $status);
 
         return $stmt->execute();
@@ -77,6 +76,7 @@ class User {
 // Insert user
     public function insertUser($name, $nic, $email, $password, $role, $status)
  {
+        echo "Inserting user: $name, $nic, $email, $password, $role, $status\n";
         $query = "INSERT INTO " . $this->table . " 
                   (name, nic, email, password, role, status)
                   VALUES (:name, :nic, :email, :password, :role, :status)";

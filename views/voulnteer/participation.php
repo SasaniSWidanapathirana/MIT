@@ -16,7 +16,7 @@ $database = new Database();
 $db = $database->connect();
 
 $eventObj = new Event($db);
-$events = $eventObj->getAllEventsWithParticipation($userId);
+$events = $eventObj->getParticipatingEvents($userId);
 ?>
 
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ $events = $eventObj->getAllEventsWithParticipation($userId);
         <!-- Top Bar -->
 
         <?php
-            $pageTitle = "Upcoming Events"; 
+            $pageTitle = "My Participation"; 
             include '../components/topbar.php';?>
 
         <!-- Main Content -->
@@ -60,7 +60,7 @@ $events = $eventObj->getAllEventsWithParticipation($userId);
                         <th>Date & Time</th>
                         <th>Location</th>
                         <th>Expected Count</th>
-                        <th>Actions</th>
+                        
                     </tr>
 
                     <?php while ($row = $events->fetch(PDO::FETCH_ASSOC)) : ?>
@@ -71,18 +71,7 @@ $events = $eventObj->getAllEventsWithParticipation($userId);
                             <td><?= htmlspecialchars($row['date_time']); ?></td>
                             <td><?= htmlspecialchars($row['location']); ?></td>
                             <td><?= htmlspecialchars($row['exp_cnt']); ?></td>
-                            <td class="action-cell">
-                                <label class="switch">
-                                    <input 
-                                        type="checkbox"
-                                        class="participation-toggle"
-                                        data-event-id="<?= $row['event_id']; ?>"
-                                        <?= $row['joined'] ? 'checked' : '' ?>
-                                    >
-
-                                    <span class="slider"></span>
-                                </label>
-                            </td>
+                            
 
                         </tr>
                     <?php endwhile; ?>
