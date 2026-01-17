@@ -30,8 +30,8 @@ if (isset($_POST['login'])) {
                 $_SESSION['role'] = $user['role'];
 
                 if ($user['role'] == 1) {
-                    header("Location: ../admin/admin_panel.php");
-                } elseif ($user['role'] == 2) {
+                   header("Location: ../admin/admin_panel.php");
+                }  elseif ($user['role'] == 2) {
                     header("Location: ../voulnteer/volunteer_panel.php");
                 }
                 exit;
@@ -81,7 +81,9 @@ if (isset($_POST['login'])) {
 <br/><br/>
         <input class="login_button" type="submit" name="login" value="Login">
     </form>
-
+        <button class="login_button" onclick="location.href='sign_up.php'">
+        sign up
+    </button>
     <button class="login_button" onclick="location.href='../../index.php'">
         Back
     </button><br/><br/><br/><br/><br/>
