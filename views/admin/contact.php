@@ -1,17 +1,25 @@
 <?php 
 // Load DB + Model
 require_once '../../config/db.php';
-require_once '../../models/event.php';
+require_once '../../models/contact_db.php';
+require_once '../../models/user.php';
 
 // DB Connection
 $database = new Database();
 $db = $database->connect();
 
-// Load events
-$past_eventObj = new Event($db);
-$past_events = $past_eventObj->getPastEvents();
+// // Load events
+// $past_eventObj = new Event($db);
+// $past_events = $past_eventObj->getAllContact();
 
-$pendingevents      = $db->query("SELECT COUNT(*) FROM contact_messages")->fetchColumn();
+// $all_contact      = $db->query("SELECT COUNT(*) FROM contact_messages")->fetchColumn();
+
+// Load contacts
+$contactObj = new ContactDB($db);
+$past_events = $contactObj->getAllContact();
+
+// Count contacts
+$all_contact = $db->query("SELECT COUNT(*) FROM contact_messages")->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +58,10 @@ $pendingevents      = $db->query("SELECT COUNT(*) FROM contact_messages")->fetch
                     count :
                 </span>
 
-               <span class="value"><?= $pendingevents; ?></span></div></div> 
+               <span class="value"><?= $all_contact; ?></span></div></div> 
             </div></div>
 <!-- Main Content -->
-        <main class="content" style="margin: 20px;>
+        <main class="content">
 
             <div class="event-table-wrapper">
                 <table class="event-table">
