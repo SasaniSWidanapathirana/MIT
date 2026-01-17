@@ -30,7 +30,7 @@ $past_events = $past_eventObj->getPastEvents();
 
 <body class="admin-body">
         <!-- Side Navigation -->
-    <?php include '../components/sidenav.php'; ?>
+    <?php include '../components/sidenav2.php'; ?>
 
     <!-- Main Wrapper -->
     <div class="main-wrapper">
@@ -53,7 +53,7 @@ $past_events = $past_eventObj->getPastEvents();
                         <th>Date & Time</th>
                         <th>Location</th>
                         <th>Expected Count</th>
-                        <th>Actions</th>
+                        
                     </tr>
 
                     <?php while ($row = $past_events->fetch(PDO::FETCH_ASSOC)) : ?>
@@ -64,14 +64,7 @@ $past_events = $past_eventObj->getPastEvents();
                             <td><?= htmlspecialchars($row['date_time']); ?></td>
                             <td><?= htmlspecialchars($row['location']); ?></td>
                             <td><?= htmlspecialchars($row['exp_cnt']); ?></td>
-                            <td class="action-cell">
-                                <a class="action-btn edit" href="edit_event.php?id=<?= urlencode($row['event_id']); ?>" title="Edit">
-                                    <span class="material-symbols-rounded">edit</span>
-                                </a>
-                                <a class="action-btn delete" href="delete_event.php?id=<?= urlencode($row['event_id']); ?>" title="Delete" onclick="return confirm('Delete this event?');">
-                                    <span class="material-symbols-rounded">delete</span>
-                                </a>
-                            </td>
+                            
                         </tr>
                     <?php endwhile; ?>
                 </table>

@@ -29,7 +29,7 @@
             event_available
             </span>My Participation</a>
 
-        <a href='../voulnteer/past_events.php' class="<?= $currentPage == 'past_events.php' ? 'active' : '' ?>">
+        <a href='../voulnteer/past_event_v.php' class="<?= $currentPage == 'past_event_v.php' ? 'active' : '' ?>">
             <span class="material-symbols-rounded">
             event
             </span>Past Events</a>
