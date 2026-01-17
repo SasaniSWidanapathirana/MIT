@@ -8,20 +8,16 @@ $userObj = new User($db);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $id = $_POST['user_id'];
+    $name = $_POST['userName'];
     $nic = $_POST['userNIC'];
     $email = $_POST['userEmail'];
-    $role = $_POST['userRole'];
-    $field = $_POST['field'];
 
-    $userObj->updateUser(
-        $id,
-        $nic,
-        $email,
-        $role,
-        $field
-    );
-// Redirect back to members page after update
+    // Correct order
+    $userObj->updateUser($id, $nic,$email, $name);
+
     header("Location: members.php?updated=1");
     exit;
 }
+header("Location: members.php?error=1");
+exit;           
 ?>
