@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
     $found = false;
 
     foreach ($users as $user) {
-        if ($user['email'] === $email && $user['password'] === $password) {
+        if ($user['email'] === $email && password_verify($password, $user['password'])) {
             $found = true;
 
             if ($user['status'] == 0) {
