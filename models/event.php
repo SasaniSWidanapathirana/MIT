@@ -2,7 +2,7 @@
 class Event {
 
     private $conn;
-    private $table = "events";
+    private $table = "event";
 
     public function __construct($db) {
         $this->conn = $db;
