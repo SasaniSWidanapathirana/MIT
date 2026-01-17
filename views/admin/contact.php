@@ -11,8 +11,7 @@ $db = $database->connect();
 $past_eventObj = new Event($db);
 $past_events = $past_eventObj->getPastEvents();
 
-
-$pendingevents      = $db->query("SELECT COUNT(*) FROM events WHERE date_time < NOW()")->fetchColumn();
+$pendingevents      = $db->query("SELECT COUNT(*) FROM contact_messages")->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +32,7 @@ $pendingevents      = $db->query("SELECT COUNT(*) FROM events WHERE date_time < 
 
 <body class="admin-body">
         <!-- Side Navigation -->
-    <?php include '../components/sidenav2.php'; ?>
+    <?php include '../components/sidenav.php'; ?>
 
     <!-- Main Wrapper -->
     <div class="main-wrapper">
@@ -45,7 +44,7 @@ $pendingevents      = $db->query("SELECT COUNT(*) FROM events WHERE date_time < 
 
 <div class="stats-bar">
 <div class="stat-box">
-                <h4>Past Events</h4>
+                <h4>Contact Count</h4>
                <div class="innerbox" style="background: #dcf3ff;"><div class="iconvalue" ><span class="material-symbols-rounded" style="background: #0078d4;">user_attributes</span>
                 <span class="label">
                     count :
@@ -53,8 +52,6 @@ $pendingevents      = $db->query("SELECT COUNT(*) FROM events WHERE date_time < 
 
                <span class="value"><?= $pendingevents; ?></span></div></div> 
             </div></div>
-
-
 <!-- Main Content -->
         <main class="content" style="margin: 20px;>
 
@@ -62,22 +59,22 @@ $pendingevents      = $db->query("SELECT COUNT(*) FROM events WHERE date_time < 
                 <table class="event-table">
                     <tr>
                         <!-- <th>ID</th> -->
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Date & Time</th>
-                        <th>Location</th>
-                        <th>Expected Count</th>
-                        
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>message</th>
+                        <th>created at</th>
+
                     </tr>
 
                     <?php while ($row = $past_events->fetch(PDO::FETCH_ASSOC)) : ?>
                         <tr>
-                            <!-- <td><?= htmlspecialchars($row['event_id']); ?></td> -->
-                            <td><?= htmlspecialchars($row['title']); ?></td>
-                            <td><?= htmlspecialchars($row['description']); ?></td>
-                            <td><?= htmlspecialchars($row['date_time']); ?></td>
-                            <td><?= htmlspecialchars($row['location']); ?></td>
-                            <td><?= htmlspecialchars($row['exp_cnt']); ?></td>
+                            <!-- <td><?= htmlspecialchars($row['id']); ?></td> -->
+                            <td><?= htmlspecialchars($row['name']); ?></td>
+                            <td><?= htmlspecialchars($row['email']); ?></td>
+                            <td><?= htmlspecialchars($row['subject']); ?></td>
+                            <td><?= htmlspecialchars($row['message']); ?></td>
+                            <td><?= htmlspecialchars($row['created_at']); ?></td>
                             
                         </tr>
                     <?php endwhile; ?>

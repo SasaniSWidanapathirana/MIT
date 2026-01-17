@@ -33,13 +33,20 @@
                 <span class="material-symbols-rounded">person</span>Users
             </a>
 
-            <a href="#contact" class="<?= $currentPage == 'contact.php' ? 'active' : '' ?>">
+            <a href="../admin/admin_pending.php" class="<?= $currentPage == 'app_pending.php' ? 'active' : '' ?>">
+            <span class="material-symbols-rounded">
+            person
+            </span>Pending App</a>
+
+            <a href="../admin/contact.php" class="<?= $currentPage == 'contact.php' ? 'active' : '' ?>">
                 <span class="material-symbols-rounded">call</span>Contact
             </a>
             <a href="../common/admin_profile.php" class="<?= $currentPage == 'profile.php' ? 'active' : '' ?>">
             <span class="material-symbols-rounded">
             person
             </span>Profile</a>
+
+            
 
         </div>
 

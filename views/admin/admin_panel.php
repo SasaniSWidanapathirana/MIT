@@ -10,6 +10,8 @@ $db = $database->connect();
 // Load events
 $eventObj = new Event($db);
 $events = $eventObj->getAllEvents();
+
+$pendingevents      = $db->query("SELECT COUNT(*) FROM events WHERE date_time > NOW()")->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +41,19 @@ $events = $eventObj->getAllEvents();
             $pageTitle = "Current Events"; // or "Member" etc.
             include '../components/topbar.php';?>
 
+            <div class="stats-bar">
+<div class="stat-box">
+                <h4>Pending Events</h4>
+               <div class="innerbox" style="background: #dcf3ff;"><div class="iconvalue" ><span class="material-symbols-rounded" style="background: #0078d4;">user_attributes</span>
+                <span class="label">
+                    count :
+                </span>
+
+               <span class="value"><?= $pendingevents; ?></span></div></div> 
+            </div></div>
+
         <!-- Main Content -->
-        <main class="content">
+        <main class="content" style="margin: 20px;">
 
             <div class="div">
                 <div class="div create-event-bar">

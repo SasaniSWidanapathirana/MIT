@@ -10,6 +10,8 @@ $db = $database->connect();
 // Load events
 $past_eventObj = new Event($db);
 $past_events = $past_eventObj->getPastEvents();
+
+$pendingevents      = $db->query("SELECT COUNT(*) FROM events WHERE date_time < NOW()")->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +42,18 @@ $past_events = $past_eventObj->getPastEvents();
             $pageTitle = "Past Events"; // or "Member" etc.
             include '../components/topbar.php';?>
 
+<div class="stats-bar">
+<div class="stat-box">
+                <h4>Past Events</h4>
+               <div class="innerbox" style="background: #dcf3ff;"><div class="iconvalue" ><span class="material-symbols-rounded" style="background: #0078d4;">user_attributes</span>
+                <span class="label">
+                    count :
+                </span>
 
+               <span class="value"><?= $pendingevents; ?></span></div></div> 
+            </div></div>
 <!-- Main Content -->
-        <main class="content">
+        <main class="content" style="margin: 20px;>
 
             <div class="event-table-wrapper">
                 <table class="event-table">

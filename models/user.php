@@ -173,5 +173,21 @@ class User {
         $stmt->execute();
         return $stmt->rowCount() > 0;
     }
+
+     // Toggle approval status: 1 <-> 11
+    public function toggleApproval($userId, $role)
+    {
+        // Only allow 1 or 11
+        if (!in_array($role, [1, 11])) {
+            return false;
+        }
+
+        $query = "UPDATE " . $this->table . " SET role = :role WHERE user_id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':role', $role, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
 }
 ?>

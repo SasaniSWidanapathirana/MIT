@@ -34,7 +34,7 @@ $user = $userObj->getUserById($_SESSION['user_id']);
 
 <body class="admin-body">   
     <!-- Side Navigation -->
-    <?php include '../components/sidenav.php'; ?>
+    <?php include '../components/sidenav2.php'; ?>
 
     <!-- Main Wrapper -->
     <div class="main-wrapper">

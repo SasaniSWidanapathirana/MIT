@@ -17,6 +17,16 @@ $db = $database->connect();
 
 $eventObj = new Event($db);
 $events = $eventObj->getParticipatingEvents($userId);
+
+// $pendingevents      = $db->query("SELECT COUNT(*) FROM events e INNER JOIN event_users eu ON e.event_id = eu.event_id WHERE eu.user_id = :user_id")->fetchColumn();
+$stmt = $db->prepare("SELECT COUNT(*) 
+                      FROM events e 
+                      INNER JOIN event_users eu ON e.event_id = eu.event_id 
+                      WHERE eu.user_id = :user_id");
+$stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+$stmt->execute();
+$pendingevents = $stmt->fetchColumn();
+
 ?>
 
 <!DOCTYPE html>
@@ -48,8 +58,20 @@ $events = $eventObj->getParticipatingEvents($userId);
             $pageTitle = "My Participation"; 
             include '../components/topbar.php';?>
 
+
+<div class="stats-bar">
+<div class="stat-box">
+                <h4>My Participation</h4>
+               <div class="innerbox" style="background: #dcf3ff;"><div class="iconvalue" ><span class="material-symbols-rounded" style="background: #0078d4;">user_attributes</span>
+                <span class="label">
+                    count :
+                </span>
+
+               <span class="value"><?= $pendingevents; ?></span></div></div> 
+            </div></div>
+
         <!-- Main Content -->
-        <main class="content">
+        <main class="content" style="margin: 20px;>
 
             <div class="event-table-wrapper">
                 <table class="event-table">
