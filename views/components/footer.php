@@ -23,7 +23,7 @@
                 <h3>Quick Links</h3>
                 <p><a href="../../index.php">Home</a></p>
                 <p><a href="/views/common/about.php">About Us</a></p>
-                <p><a href="#">Contact Us</a></p>
+                <p><a href="/views/common/contact.php">Contact Us</a></p>
                 <p><a href="/views/common/login.php">Login</a></p>
             </div>
 
